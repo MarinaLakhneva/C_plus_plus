@@ -4,59 +4,29 @@
 
 double set_the_equation(double a, double b, double c) {
     // функция позволяет посмотреть вид уравнения
-    if ((a > 0) || (a < 0)) {
-        if ((b < 0) && (c < 0)) {
-            std::cout << a << "x^2 " << b << "x " << c << "\n";
-        }
-        else if ((b > 0) && (c > 0)) {
-            std::cout << a << "x^2 + " << b << "x + " << c << "\n";
-        }
-        else if ((b < 0) && (c > 0)) {
-            std::cout << a << "x^2 " << b << "x + " << c << "\n";
-        }
-        else if ((b > 0) && (c < 0)) {
-            std::cout << a << "x^2 + " << b << "x " << c << "\n";
-        }
-        else if ((b == 0) && (c < 0)) {
-            std::cout << a << "x^2 " << c << "\n";
-        }
-        else if ((c == 0) && (b < 0)) {
-            std::cout << a << "x^2 " << b << "x " << "\n";
-        }
-        else if ((b == 0) && (c > 0)) {
-            std::cout << a << "x^2 + " << c << "\n";
-        }
-        else if ((c == 0) && (b > 0)) {
-            std::cout << a << "x^2 + " << b << "x " << "\n";
-        }
+    if (a == 0) {
     }
     else {
-        if ((b < 0) && (c < 0)) {
-            std::cout << b << "x " << c << "\n";
-        }
-        else if ((b > 0) && (c > 0)) {
-            std::cout << b << "x + " << c << "\n";
-        }
-        else if ((b < 0) && (c > 0)) {
-            std::cout << b << "x + " << c << "\n";
-        }
-        else if ((b > 0) && (c < 0)) {
-            std::cout << b << "x " << c << "\n";
-        }
-        else if ((b == 0) && (c < 0)) {
-            std::cout << c << "\n";
-        }
-        else if ((c == 0) && (b < 0)) {
-            std::cout << b << "x " << "\n";
-        }
-        else if ((b == 0) && (c > 0)) {
-            std::cout << c << "\n";
-        }
-        else if ((c == 0) && (b > 0)) {
-            std::cout << b << "x " << "\n";
-        }
+        std::cout << a << "x^2 ";
     }
 
+    if (((b > 0) && (a == 0)) || (b < 0)) {
+        std::cout << b << "x";
+    }
+    else if (b > 0){
+        std::cout << " + " << b << "x";
+    }
+    else if(b == 0){
+    }
+
+    if (((a == 0) && (b == 0)) || (c < 0)) {
+        std::cout << c;
+    }
+    else if (c > 0) {
+        std::cout << " + " << c;
+    }
+    else if (c == 0) {
+    }
     return 0;
 }
 
@@ -184,21 +154,17 @@ void solve(double a, double b, double c) {
     // функция определяет вид уравнения
     set_the_equation(a, b, c);
     if ( (a == 0) || (b == 0) || (c == 0) ) {
-        std::cout << "Введеное квадратное уравнение является неполным!" << "\n";
+        std::cout << "\n" << "Введеное квадратное уравнение является неполным!" << "\n";
         conditions_partial(a, b, c);
     }
     else {
-        std::cout << "Введеное квадратное уравнение является полным." << "\n";
+        std::cout << "\n" << "Введеное квадратное уравнение является полным." << "\n";
         conditions_square(a, b, c);
     }
 }
 
-int main() {
-    setlocale(LC_CTYPE, "Russian");
-    double a = 0;
-    double b = 0;
-    double c = 0;
-
+void input(double a, double b, double c) {
+    // функция для ввода параметров
     std::cout << "Введите коэффициенты квадратного уравнения:" << "\n";
     std::cout << "a = ";
     std::cin >> a;
@@ -208,5 +174,11 @@ int main() {
     std::cin >> c;
 
     solve(a, b, c);
+}
+
+int main() {
+    setlocale(LC_CTYPE, "Russian");
+
+    input(0, 0, 0);
     return 0;
 }

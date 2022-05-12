@@ -11,10 +11,10 @@ double set_the_equation(double a, double b, double c) {
     }
 
     if (((b > 0) && (a == 0)) || (b < 0)) {
-        std::cout << b << "x";
+        std::cout << b << "x ";
     }
     else if (b > 0){
-        std::cout << " + " << b << "x";
+        std::cout << "+ " << b << "x ";
     }
     else if(b == 0){
     }
@@ -23,17 +23,17 @@ double set_the_equation(double a, double b, double c) {
         std::cout << c;
     }
     else if (c > 0) {
-        std::cout << " + " << c;
+        std::cout << "+ " << c;
     }
     else if (c == 0) {
     }
-    return 0;
+    return 1;
 }
 
 double get_D(double a, double b, double c) {
     // функция считает дискриминант
     double discriminant = 0;
-    discriminant = ( pow(b,2) - (4 * a * c) );
+    discriminant = (b * b - (4 * a * c));
 
     return discriminant;
 }
@@ -53,7 +53,7 @@ double real_roots(double a, double b, double c, double root_of_discriminant) {
         x_2 = (((-b) - root_of_discriminant) / (2 * a));
         std::cout << "Квадратное уравнение имеет два корня:" << "\n" << "x_1 = " << x_1 << "\n" << "x_2 = " << x_2;
     }
-    return 0;
+    return 1;
 }
 
 double complex_roots(double a, double b, double c, double discriminant) {
@@ -67,8 +67,7 @@ double complex_roots(double a, double b, double c, double discriminant) {
     x_r = ( (-b) / (2 * a) );
 
     std::cout << "x_1 = " << x_r << " + " << x_c << "*i" << "\n" << "x_2 = " << x_r << " - " << x_c << "*i";
-
-    return 0;
+    return 1;
 }
 
 double conditions_square(double a, double b, double c) {
@@ -85,7 +84,7 @@ double conditions_square(double a, double b, double c) {
             std::cout << "D = " << discriminant << "\n";
             real_roots(a, b, c, root_of_discriminant);
         }
-        return 0;
+        return 1;
 }
 
 double a_0(double b, double c) {
@@ -93,7 +92,6 @@ double a_0(double b, double c) {
     double x = 0;
     x = ( (-c) / b );
     std::cout << "Один корень:" << "\n" << "x = " << x;
-
     return x;
 }
 
@@ -116,7 +114,7 @@ double b_0(double a, double c) {
         x = sqrt(value_);
         std::cout << "x_1 = " << x << "*i" << "\n" << "x_2 = -" << x << "*i";
     }
-    return 0;
+    return 1;
 }
 
 double c_0(double a, double b) {
@@ -124,8 +122,7 @@ double c_0(double a, double b) {
     double x_2 = 0;
     x_2 = ( (-b) / a );
     std::cout << "x_1 = 0" << "\n" << "x_2 = " << x_2;
-    
-    return 0;
+    return 1;
 }
 
 void conditions_partial(double a, double b, double c) {
@@ -166,10 +163,13 @@ void solve(double a, double b, double c) {
 void input(double a, double b, double c) {
     // функция для ввода параметров
     std::cout << "Введите коэффициенты квадратного уравнения:" << "\n";
+
     std::cout << "a = ";
     std::cin >> a;
+
     std::cout << "b = ";
     std::cin >> b;
+
     std::cout << "c = ";
     std::cin >> c;
 
@@ -180,5 +180,5 @@ int main() {
     setlocale(LC_CTYPE, "Russian");
 
     input(0, 0, 0);
-    return 0;
+    return 1;
 }
